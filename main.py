@@ -10,7 +10,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
-
+    print('develop')
     await message.reply('Nikita Dvornitsyn\'s test bot')
 
 
