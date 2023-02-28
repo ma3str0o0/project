@@ -21,5 +21,26 @@ async def echo(message: types.Message):
     await message.answer(message.text)
 
 
+@dp.message_handler(commands=['weather'])
+async def question_answer(message: types.Message):
+
+    cities = {
+        'Moscow',
+        'Dubai',
+        'New-York',
+        'Yekaterinburg',
+        'Abu-Dhabi',
+    }
+    url = 'https://wttr.in'
+    # не изменяйте значение URL
+
+    weather_parameters = {
+        '0': '',
+        'T': '',
+        'M': '',
+        'lang': 'ru'
+    }
+
+
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=False)
