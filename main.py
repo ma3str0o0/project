@@ -24,7 +24,7 @@ async def commands_help(message: types.Message):
         '/quit': 'log out'
     }
     for i in commands_option:
-         await message.answer(f'Command {commands_option.keys()[i]} is reliable for {commands_option.values()[i]}')
+         await message.answer(f'Command {commands_option.value()} is reliable for {commands_option[i]}')
 
 
 
