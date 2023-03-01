@@ -15,17 +15,18 @@ async def send_welcome(message: types.Message):
     await message.answer('Nikita Dvornitsyn\'s test bot')
 
 
-@dp.message_handler(commands=['commands', 'help'])
+@dp.message_handler(commands=['help'])
 async def commands_help(message: types.Message):
-    commands_option = {
-        '/start': 'Bot start-up',
-        '/help': 'Assistance and questions',
-        '/commands': 'Shows the list of usable commands',
-        '/quit': 'log out'
-    }
-    for i in commands_option:
-         await message.answer(f'Command {commands_option.value()} is reliable for {commands_option[i]}')
 
+    await message.answer('Wait... Uploading your request')
+
+
+@dp.message_handler(commands=['image, img'])
+async def cmd_image(message: types.Message):
+    URL = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fnature%2F&psig=AOvVaw3Vux3E-IC7QIWyJ2KQjxMR&ust=1677780723183000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCIjzz7Gqu_0CFQAAAAAdAAAAABAE'
+
+    await bot.send_photo(message.chat.id, types.InputFile.from_url(URL))
+    await bot.sen
 
 
 
