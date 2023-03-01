@@ -9,37 +9,24 @@ bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
 
-@dp.message_handler(commands=['start', 'help'])
+@dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
 
-    await message.reply('Nikita Dvornitsyn\'s test bot')
+    await message.answer('Nikita Dvornitsyn\'s test bot')
 
 
-@dp.message_handler()
-async def echo(message: types.Message):
-
-    await message.answer(message.text)
-
-
-@dp.message_handler(commands=['weather'])
-async def question_answer(message: types.Message):
-
-    cities = {
-        'Moscow',
-        'Dubai',
-        'New-York',
-        'Yekaterinburg',
-        'Abu-Dhabi',
+@dp.message_handler(commands=['commands', 'help'])
+async def commands_help(message: types.Message):
+    commands_option = {
+        '/start': 'Bot start-up',
+        '/help': 'Assistance and questions',
+        '/commands': 'Shows the list of usable commands',
+        '/quit': 'log out'
     }
-    url = 'https://wttr.in'
-    # не изменяйте значение URL
+    for i in commands_option:
+         await message.answer(f'Command {commands_option.keys()[i]} is reliable for {commands_option.values()[i]}')
 
-    weather_parameters = {
-        '0': '',
-        'T': '',
-        'M': '',
-        'lang': 'ru'
-    }
+
 
 
 if __name__ == '__main__':
